@@ -6,7 +6,25 @@
         xmlns:local="clr-namespace:Ground_Terminal_System"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+    <Grid Background="DimGray">
+        <TextBox x:Name="searchBar"
+                 Height="25" Width="300" 
+                 HorizontalAlignment="Left" VerticalAlignment="Top" 
+                 Margin="10 10" BorderBrush="#FF64B5F6"
+        />
+        <TextBlock Text="Time" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 10 220 0" FontSize="20" Foreground="White" />
+        <TextBox x:Name="timeBar"
+                 Height="25" Width="200" 
+                 HorizontalAlignment="Right" VerticalAlignment="Top" 
+                 Margin="0 10 10 0" BorderBrush="#FF64B5F6"
+        />
+        <Image Source="/icons8-search-48.png" Margin="10,10,765,399"/>
 
+        <GroupBox x:Name="gforce" Height="350" Width="350" HorizontalAlignment="Center" VerticalAlignment="Bottom" BorderBrush="White" Margin="0 0 390 25">
+
+        </GroupBox>
+        <GroupBox x:Name="Altitude" Height="350" Width="350" HorizontalAlignment="Center" VerticalAlignment="Bottom" BorderBrush="White" Margin="390 0 0 25">
+
+        </GroupBox>
     </Grid>
 </Window>

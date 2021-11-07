@@ -7,4 +7,18 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="icons8-search-48.png" />
+    <None Remove="searchIcon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="img\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="icons8-search-48.png" />
+    <Resource Include="searchIcon.png" />
+  </ItemGroup>
+
 </Project>
