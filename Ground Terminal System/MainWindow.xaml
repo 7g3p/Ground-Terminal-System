@@ -115,8 +115,18 @@
         </Canvas>
 
         <Canvas x:Name="dbData" Width="740" Height="340" VerticalAlignment="Bottom" Margin="0 0 0 20" Visibility="Visible">
-            <DataGrid x:Name="dbDataGrid" Height="340" Width="740" Background="#FF3F8CCF" AutoGenerateColumns="True" BorderBrush="White" VerticalScrollBarVisibility="Auto">
-                
+            <DataGrid x:Name="dbDataGrid" Height="340" Width="740" Background="#FF3F8CCF" IsReadOnly="True" BorderBrush="White" VerticalScrollBarVisibility="Auto" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridCheckBoxColumn Header="Timestamp" Width="92.5"/>
+                    <DataGridCheckBoxColumn Header="Accel-X" Width="92.5"/>
+                    <DataGridCheckBoxColumn Header="Accel-Y" Width="92.5"/>
+                    <DataGridCheckBoxColumn Header="Accel-Z" Width="92.5"/>
+                    <DataGridCheckBoxColumn Header="Weight" Width="92.5"/>
+                    <DataGridCheckBoxColumn Header="Altitude" Width="92.5"/>
+                    <DataGridCheckBoxColumn Header="Pitch" Width="92.5"/>
+                    <DataGridCheckBoxColumn Header="Bank" Width="92.5"/>
+                </DataGrid.Columns>
+
             </DataGrid>
         </Canvas>
     </Grid>
