@@ -23,6 +23,36 @@ namespace Ground_Terminal_System
         public MainWindow()
         {
             InitializeComponent();
+            timeBar.Content = DateTime.Now;
+        }
+
+        private void searchBar_KeyDown(object sender, KeyEventArgs e)
+        {
+            // Check if the enter key has been pressed then....???
+            if (e.Key == Key.Enter)
+            {
+                //TextBox temp = (TextBox)sender;
+
+                //timeBar.Content = temp.Text;
+            }
+        }
+
+        private void realTimeToggle_Click(object sender, RoutedEventArgs e)
+        {
+            // Variables
+            CheckBox rtCheckbox = (CheckBox)sender;
+
+            // Confirms "checked" state; if not checked make realTimeData hidden and reveal dbData table
+            if (rtCheckbox.IsChecked == true)
+            {
+                realTimeData.Visibility = Visibility.Visible;
+                // dbData.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                realTimeData.Visibility = Visibility.Hidden;
+                // dbData.Visibility = Visibility.Visible;
+            }
         }
     }
 }

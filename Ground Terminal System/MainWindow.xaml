@@ -5,26 +5,119 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Ground_Terminal_System"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid Background="DimGray">
+        Title="Ground Terminal system" MaxHeight="475" MaxWidth="800" MinHeight="475" MinWidth="800">
+    <Grid Background="#FF343434">
+        <TextBlock x:Name="tailNum" Text="No Aircraft Connected" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 10" FontSize="20" FontWeight="Bold" Foreground="#FFFF5E5E" FontFamily="Arial Narrow">
+            <TextBlock.TextDecorations>
+                <TextDecoration/>
+            </TextBlock.TextDecorations>
+        </TextBlock>
         <TextBox x:Name="searchBar"
-                 Height="25" Width="300" 
-                 HorizontalAlignment="Left" VerticalAlignment="Top" 
-                 Margin="10 10" BorderBrush="#FF64B5F6"
+                 Height="25" Width="210" 
+                 HorizontalAlignment="Left" VerticalAlignment="Top" VerticalContentAlignment="Center"
+                 Margin="40 10" BorderBrush="#FF64B5F6" KeyDown="searchBar_KeyDown"
         />
-        <TextBlock Text="Time" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 10 220 0" FontSize="20" Foreground="White" />
-        <TextBox x:Name="timeBar"
+        <Image Source="/icons8-search-48.png" Margin="10,10,740,399" Width="50"/>
+
+        <TextBlock Text="Time:" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 10 220 0" FontSize="20" Foreground="White" />
+        <Label x:Name="timeBar"
                  Height="25" Width="200" 
-                 HorizontalAlignment="Right" VerticalAlignment="Top" 
-                 Margin="0 10 10 0" BorderBrush="#FF64B5F6"
+                 HorizontalAlignment="Right" VerticalAlignment="Top" VerticalContentAlignment="Center"
+                 Margin="0 10 10 0" Background="White" BorderBrush="#FF64B5F6"
         />
-        <Image Source="/icons8-search-48.png" Margin="10,10,765,399"/>
+        
+        <CheckBox x:Name="realTimeToggle" Height="20" Width="100" Content="Real-time" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 45 20 0" Foreground="White" FontSize="15" VerticalContentAlignment="Center" IsChecked="True" Click="realTimeToggle_Click" />
 
-        <GroupBox x:Name="gforce" Height="350" Width="350" HorizontalAlignment="Center" VerticalAlignment="Bottom" BorderBrush="White" Margin="0 0 390 25">
+        <Canvas x:Name="realTimeData" Width="740" Height="340" VerticalAlignment="Bottom" Margin="0 0 0 20" Visibility="Hidden">
+            <Border  
+            BorderThickness="1"  
+            BorderBrush="White"  
+            CornerRadius="10"
+            HorizontalAlignment="Center"  
+            VerticalAlignment="Bottom"  
+            Width="350"  
+            Height="340"
+            Margin="0 0 390 10"/>
+        <Border  
+            BorderThickness="1"  
+            BorderBrush="White"  
+            CornerRadius="10"
+            HorizontalAlignment="Center"  
+            VerticalAlignment="Bottom"  
+            Width="350"  
+            Height="340"
+            Margin="390 0 0 10"/>
 
-        </GroupBox>
-        <GroupBox x:Name="Altitude" Height="350" Width="350" HorizontalAlignment="Center" VerticalAlignment="Bottom" BorderBrush="White" Margin="390 0 0 25">
+        <StackPanel x:Name="gforce" Height="350" Width="350" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 390 0">
+            <TextBlock Text="G-Force" FontSize="30" Foreground="White" TextAlignment="Center" HorizontalAlignment="Center"/>
 
-        </GroupBox>
+            <Grid x:Name="gforceData" HorizontalAlignment="Center" Height="300" Width="320" Grid.Row="2" Grid.Column="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="160"/>
+                    <ColumnDefinition Width="160"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="150"/>
+                    <RowDefinition Height="150"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="0" Grid.Column="0" Height="100" Width="150" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 10" Background="#FF474747">
+                    <TextBlock x:Name="accelX" Text="0.0000" Width="130" Background="White" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 20 0 0" TextAlignment="Center" FontSize="20"/>
+                    <Label Content="Accel-X" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="15" Foreground="White" Margin="0 20 0 0"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="0" Grid.Column="1" Height="100" Width="150" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 10" Background="#FF474747">
+                    <TextBlock x:Name="accelY" Text="0.0000" Width="130" Background="White" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 20 0 0" TextAlignment="Center" FontSize="20"/>
+                    <Label Content="Accel-Y" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="15" Foreground="White" Margin="0 20 0 0"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="1" Grid.Column="0" Height="100" Width="150" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 10 0 0" Background="#FF474747">
+                    <TextBlock x:Name="accelZ" Text="0.0000" Width="130" Background="White" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 20 0 0" TextAlignment="Center" FontSize="20"/>
+                    <Label Content="Accel-Z" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="15" Foreground="White" Margin="0 20 0 0"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="1" Grid.Column="1" Height="100" Width="150" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 10 0 0" Background="#FF474747">
+                    <TextBlock x:Name="weight" Text="0.0000" Width="130" Background="White" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 20 0 0" TextAlignment="Center" FontSize="20"/>
+                    <Label Content="Weight" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="15" Foreground="White" Margin="0 20 0 0"/>
+                </StackPanel>
+
+
+            </Grid>
+        </StackPanel>
+            <StackPanel x:Name="alt" Height="350" Width="350" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="390 0 0 0">
+                <TextBlock Text="Altitude" FontSize="30" Foreground="White" TextAlignment="Center" HorizontalAlignment="Center"/>
+
+                <Grid x:Name="altitudeData" HorizontalAlignment="Center" Height="150" Width="320" Grid.Row="1" Grid.Column="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="160"/>
+                        <ColumnDefinition Width="160"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="150"/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Grid.Row="0" Grid.Column="0" Height="100" Width="150" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 10" Background="#FF474747">
+                        <TextBlock x:Name="altitude" Text="0.0000" Width="130" Background="White" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 20 0 0" TextAlignment="Center" FontSize="20"/>
+                        <Label Content="Altitude" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="15" Foreground="White" Margin="0 20 0 0"/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="0" Grid.Column="1" Height="100" Width="150" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 10" Background="#FF474747">
+                        <TextBlock x:Name="pitch" Text="0.0000" Width="130" Background="White" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 20 0 0" TextAlignment="Center" FontSize="20"/>
+                        <Label Content="Pitch" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="15" Foreground="White" Margin="0 20 0 0"/>
+                    </StackPanel>
+
+                </Grid>
+                <StackPanel Height="100" Width="150" Margin="0 10" Background="#FF474747">
+                    <TextBlock x:Name="bank" Text="0.0000" Width="130" Background="White" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 20 0 0" TextAlignment="Center" FontSize="20"/>
+                    <Label Content="Bank" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="15" Foreground="White" Margin="0 20 0 0"/>
+                </StackPanel>
+            </StackPanel>
+        </Canvas>
+
+        <Canvas x:Name="dbData" Width="740" Height="340" VerticalAlignment="Bottom" Margin="0 0 0 20" Visibility="Visible">
+            <DataGrid x:Name="dbDataGrid" Height="340" Width="740" Background="#FF3F8CCF" AutoGenerateColumns="True" BorderBrush="White">
+                
+            </DataGrid>
+        </Canvas>
     </Grid>
 </Window>
