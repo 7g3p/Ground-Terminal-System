@@ -115,7 +115,7 @@
         </Canvas>
 
         <Canvas x:Name="dbData" Width="740" Height="340" VerticalAlignment="Bottom" Margin="0 0 0 20" Visibility="Visible">
-            <DataGrid x:Name="dbDataGrid" Height="340" Width="740" Background="#FF3F8CCF" AutoGenerateColumns="True" BorderBrush="White">
+            <DataGrid x:Name="dbDataGrid" Height="340" Width="740" Background="#FF3F8CCF" AutoGenerateColumns="True" BorderBrush="White" VerticalScrollBarVisibility="Auto">
                 
             </DataGrid>
         </Canvas>
